@@ -1,0 +1,28 @@
+{
+  "config": {
+    "address": "10.1.7.42",
+    "led": True,
+    "zona": "Zona1"
+  },
+  "menor":{
+    "label": "Menor",
+    "font_size": 45,
+    "position": [20, 20],
+    "size": [280, 90],
+    "color": [255,0,0]
+  },
+  "entregada":{
+    "label": "Entregada",
+    "font_size": 45,
+    "position": [20, 20],
+    "size": [280, 90],
+    "color": [0,0,255]
+  },
+  "mayor":{
+    "label": "Mayor",
+    "font_size": 45,
+    "position": [20, 20],
+    "size": [280, 90],
+    "color": [0, 255, 0]
+  }
+}

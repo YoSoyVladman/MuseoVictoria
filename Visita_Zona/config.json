@@ -1,0 +1,8 @@
+{
+  "config": {
+    "address": "10.1.7.42",
+    "led": True,
+    "zona": "Zona1"
+  }
+}
+ 
