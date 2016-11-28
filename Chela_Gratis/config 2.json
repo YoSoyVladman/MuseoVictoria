@@ -1,0 +1,51 @@
+{
+  "osc_config": {
+    "address": "10.1.7.42",
+    "port": 7890
+  },
+  "buttons": [
+    {
+      "label": "Iniciar",
+      "font_size": 45,
+      "position": [20, 20],
+      "size": [280, 90],
+      "colors": {
+        "normal": [64, 255, 32],
+        "pressed": [64, 64, 64]
+      },
+      "osc_actions": [
+        {
+          "address": "/nuup/Act_1/Scene_1/Video_360618/rate",
+          "value_on": 1.0
+        },
+        {
+          "address": "/nuup/Act_1/Scene_1/Switcher_6A872A/source_index",
+          "value_on": 0
+        }
+      ]
+    },
+    {
+      "label": "Detener",
+      "font_size": 45,
+      "position": [20, 130],
+      "size": [280, 90],
+      "colors": {
+        "normal": [255, 64, 32],
+        "pressed": [64, 64, 64]
+      },
+      "osc_actions": [{
+        "address": "/nuup/Act_1/Scene_1/Switcher_6A872A/source_index",
+        "value_on": 1
+      },
+      {
+        "address": "/nuup/Act_1/Scene_1/Video_360618/rate",
+        "value_on": 0.0
+      },
+      {
+        "address": "/nuup/Act_1/Scene_1/Video_360618/rewind",
+        "value_on": 1
+      }
+    ]
+  }
+]
+}
