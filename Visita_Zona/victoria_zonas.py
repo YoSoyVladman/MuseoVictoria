@@ -2,7 +2,7 @@ import re, sys, signal, os, time, datetime
 import serial
 ### Instalar Requets
 import requests
-import RPi.GPIO as GPIO
+#import RPi.GPIO as GPIO
 import json
 
 GPIO.setmode(GPIO.BOARD)
@@ -12,9 +12,9 @@ BITRATE = 9600
 
 
 DEFAULT_CONFIG = {
-    "address": "http://10.1.8.170:9000/api/visitors/",
+    "address": "http://10.0.1.100:8080/api/visitors/",
     "led": False,
-    "zona": "Zona1"
+    "zona": "Vlad-Poppler-Cocolab"
   }
 
 
@@ -42,19 +42,19 @@ def load_config(filepath):
     led = config.get('led')
     zona = config.get('zona')
 
-
+'''
 def encender():
     GPIO.output(11,True)
     time.sleep(1)
     GPIO.output(11,False)
-
+'''
 def mandar_zona(rfid):
     global led
     global url
     global zona
 
-    if led:
-        encender()
+    #if led:
+    #    encender()
     consulta = url + rfid + '/' + zona
     print consulta
     r = requests.get(consulta)
@@ -81,9 +81,9 @@ if __name__ == "__main__":
     try:
         ser.flushInput()
         ser.flushOutput()
-    except Exception, e:
+    except serial.serialutil.SerialException:
         print "error open serial port: " + str(e)
-        exit()
+        pass
 
     if ser.isOpen():
         while True:
@@ -91,5 +91,5 @@ if __name__ == "__main__":
             last_received = line.strip()
             #print rfid
             match = rfidPattern.sub('', last_received)
-	    print match
+            print match
             mandar_zona(match)
