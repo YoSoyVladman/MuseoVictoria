@@ -32,7 +32,7 @@ def white_background():
     background.fill(WHITE)
 
     font = pygame.font.Font(None, 36)
-    text = font.render("COCOLAB", 1,WHITE)
+    text = font.render("COCOLAB", 1, (10, 10, 10))
     textpos = text.get_rect(centerx=background.get_width()/2)
     background.blit(text, textpos)
 
@@ -40,31 +40,32 @@ def white_background():
     pygame.display.flip()
 
 def entregado():
-    background.fill(BLUE)
+    background.fill(AZUL)
 
-    font = pygame.font.Font(None, 45)
-    text = font.render("CHELA ENTREGADA", 1,WHITE)
+    font = pygame.font.Font(None, 36)
+    text = font.render("CHELA ENTREGADA", 1, (10, 10, 10))
     textpos = text.get_rect(centerx=background.get_width()/2)
-    background.blit(text, (10,100))
+    background.blit(text, textpos)
     screen.blit(background, (0, 0))
     pygame.display.flip()
 
 def permitido():
     background.fill(GREEN)
 
-    font = pygame.font.Font(None,50)
-    text = font.render("CHELA GRATIS", 1,WHITE)
+    font = pygame.font.Font(None, 36)
+    text = font.render("CHELA GRATIS", 1, (10, 10, 10))
     textpos = text.get_rect(centerx=background.get_width()/2)
-    background.blit(text, (30,100))
+    background.blit(text, textpos)
     screen.blit(background, (0, 0))
     pygame.display.flip()
 
-def nopermitido(text):
+def nopermitido():
     background.fill(RED)
-    font = pygame.font.Font(None, 50)
-    text = font.render(text, 1,WHITE)
+
+    font = pygame.font.Font(None, 36)
+    text = font.render("MENOR DE EDAD", 1, (10, 10, 10))
     textpos = text.get_rect(centerx=background.get_width()/2)
-    background.blit(text, (10,100))
+    background.blit(text, textpos)
     screen.blit(background, (0, 0))
     pygame.display.flip()
 
@@ -100,7 +101,7 @@ if __name__ == '__main__':
           if edad == 'True':
             if not chela:
               print 'Permitido'
-              permitido()
+              pygame.draw.rect(screen,GREEN,RECT)
               c = requests.post(URL + 'free/' + match + '/true')
               #time.sleep(2)
               #pygame.draw.rect(screen,BLACK,RECT)
@@ -108,14 +109,8 @@ if __name__ == '__main__':
               print 'Entregada'
               entregado()
           else:
-	      if(r.status_code == requests.codes.ok):
-		n = "MENOR DE EDAD"
-              	nopermitido(n)
-	      else:
-              	error = "NO ENCONTRADO"
-              	print 'Error'
-              	nopermitido(error)
-
+            print 'No Permitido'
+            pygame.draw.rect(screen,RED,RECT)
       except requests.ConnectionError as e:
           pass
       except requests.HTTPError as e:
