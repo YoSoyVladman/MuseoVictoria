@@ -28,24 +28,13 @@ background = pygame.Surface(screen.get_size())
 background = background.convert()
 
 
-def inicio():
+def white_background():
     background.fill(WHITE)
 
-    font = pygame.font.Font(None, 50)
-    text = font.render("MUSEO VICTORIA", 1,BLACK)
+    font = pygame.font.Font(None, 36)
+    text = font.render("COCOLAB", 1,WHITE)
     textpos = text.get_rect(centerx=background.get_width()/2)
-    background.blit(text,(10,100))
-
-    screen.blit(background, (0, 0))
-    pygame.display.flip()
-
-def espera():
-    background.fill(BLACK)
-
-    font = pygame.font.Font(None, 50)
-    text = font.render("MUSEO VICTORIA", 1,WHITE)
-    textpos = text.get_rect(centerx=background.get_width()/2)
-    background.blit(text, (10,100))
+    background.blit(text, textpos)
 
     screen.blit(background, (0, 0))
     pygame.display.flip()
@@ -53,20 +42,20 @@ def espera():
 def entregado():
     background.fill(BLUE)
 
-    font = pygame.font.Font(None, 45)
+    font = pygame.font.Font(None, 36)
     text = font.render("CHELA ENTREGADA", 1,WHITE)
     textpos = text.get_rect(centerx=background.get_width()/2)
-    background.blit(text, (10,100))
+    background.blit(text, textpos)
     screen.blit(background, (0, 0))
     pygame.display.flip()
 
 def permitido():
     background.fill(GREEN)
 
-    font = pygame.font.Font(None,50)
+    font = pygame.font.Font(None, 36)
     text = font.render("CHELA GRATIS", 1,WHITE)
     textpos = text.get_rect(centerx=background.get_width()/2)
-    background.blit(text, (30,100))
+    background.blit(text, textpos)
     screen.blit(background, (0, 0))
     pygame.display.flip()
 
@@ -94,7 +83,6 @@ if __name__ == '__main__':
     exit()
 
   if ser.isOpen():
-    inicio()
     while True:
        #pygame.draw.rect(screen,WHITE,RECT)
       line = ser.readline()
@@ -124,8 +112,8 @@ if __name__ == '__main__':
 		n = "MENOR DE EDAD"
               	nopermitido(n)
 	      else:
-              	error = "NO ENCONTRADO"
-              	print 'Error'
+              	error = json.get('Error')
+              	pr
               	nopermitido(error)
 
       except requests.ConnectionError as e:
@@ -140,9 +128,6 @@ if __name__ == '__main__':
           pass
 
 
-      #time.sleep(10)
-      #espera()
       pygame.display.update()
-      time.sleep(2)
-      espera()
+      #time.sleep(2)
       #pygame.draw.rect(screen,BLACK,RECT)
