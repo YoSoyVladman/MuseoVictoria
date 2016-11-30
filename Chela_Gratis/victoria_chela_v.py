@@ -46,13 +46,13 @@ if __name__ == '__main__':
       match = rfidPattern.sub('', last_received)
       print match
       cadena = URL + 'edad/' +match
-      r = requests.get(cadena)
-      json = r.json()
-      print json
       try:
+          r = requests.get(cadena)
+          json = r.json()
+          print json
           edad = json.get('edad')
           chela = json.get('chelaFree')
-          
+
           if edad == 'True':
             if not chela:
               print 'Permitido'
