@@ -39,6 +39,17 @@ def white_background():
     screen.blit(background, (0, 0))
     pygame.display.flip()
 
+def espera():
+    background.fill(BLACK)
+
+    font = pygame.font.Font(None, 50)
+    text = font.render("ESPERA", 1,WHITE)
+    textpos = text.get_rect(centerx=background.get_width()/2)
+    background.blit(text, (10,100))
+
+    screen.blit(background, (0, 0))
+    pygame.display.flip()
+
 def entregado():
     background.fill(BLUE)
 
@@ -128,6 +139,8 @@ if __name__ == '__main__':
           pass
 
 
+      time.sleep(2)
+      espera()
       pygame.display.update()
       #time.sleep(2)
       #pygame.draw.rect(screen,BLACK,RECT)
