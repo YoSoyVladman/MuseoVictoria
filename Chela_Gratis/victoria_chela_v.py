@@ -65,8 +65,7 @@ if __name__ == '__main__':
 
   if ser.isOpen():
     while True:
-      #pygame.draw.rect(screen,WHITE,RECT)
-      white_background()
+       #pygame.draw.rect(screen,WHITE,RECT)
       line = ser.readline()
       last_received = line.strip()
       match = rfidPattern.sub('', last_received)
