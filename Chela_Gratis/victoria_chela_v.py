@@ -109,8 +109,9 @@ if __name__ == '__main__':
               print 'Entregada'
               entregado()
           else:
-            print 'No Permitido'
-            nopermitido()
+              error = json.get('error')
+              print error
+              nopermitido()
 
       except requests.ConnectionError as e:
           pass
