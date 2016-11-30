@@ -30,10 +30,16 @@ screen = pygame.display.set_mode(SCR_SIZE)
 def white_background():
     background = pygame.Surface(screen.get_size())
     background = background.convert()
-    background.fill((255,255,255))
+    background.fill(WHITE)
     screen.blit(background, (0, 0))
     pygame.display.flip()
 
+def entregado():
+    background = pygame.Surface(screen.get_size())
+    background = background.convert()
+    background.fill(RED)
+    screen.blit(background, (0, 0))
+    pygame.display.flip()
 
 #URL = 'http://10.0.1.100:8080/api/visitors/'
 URL = 'http://10.1.8.170:9000/api/visitors/'
@@ -73,9 +79,7 @@ if __name__ == '__main__':
               #pygame.draw.rect(screen,BLACK,RECT)
             else:
               print 'Entregada'
-              pygame.draw.rect(screen,BLUE,RECT)
-              #time.sleep(2)
-              #pygame.draw.rect(screen,BLACK,RECT)
+              entregado()
           else:
             print 'No Permitido'
             pygame.draw.rect(screen,RED,RECT)
