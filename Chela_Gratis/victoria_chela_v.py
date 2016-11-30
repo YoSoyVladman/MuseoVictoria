@@ -30,7 +30,9 @@ screen = pygame.display.set_mode(SCR_SIZE)
 def white_background():
     background = pygame.Surface(screen.get_size())
     background = background.convert()
-    background.fill((250, 250, 250))
+    background.fill((255,255,255))
+    screen.blit(background, (0, 0))
+    pygame.display.flip()
 
 
 #URL = 'http://10.0.1.100:8080/api/visitors/'
