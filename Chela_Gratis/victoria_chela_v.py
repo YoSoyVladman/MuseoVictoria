@@ -1,3 +1,4 @@
+
 import re, sys, signal, os, time, datetime
 import serial
 ### Instalar Requets
@@ -49,29 +50,40 @@ if __name__ == '__main__':
       r = requests.get(cadena)
       json = r.json()
       print json
-      edad = json.get('edad')
-      chela = json.get('chelaFree')
+      try:
+          edad = json.get('edad')
+          chela = json.get('chelaFree')
+          
+          if edad == 'True':
+            if not chela:
+              print 'Permitido'
+              pygame.draw.rect(screen,GREEN,RECT)
+              c = requests.post(URL + 'free/' + match + '/true')
+              #time.sleep(2)
+              #pygame.draw.rect(screen,BLACK,RECT)
+            else:
+              print 'Entregada'
+              pygame.draw.rect(screen,BLUE,RECT)
+              #time.sleep(2)
+              #pygame.draw.rect(screen,BLACK,RECT)
+          else:
+            print 'No Permitido'
+            pygame.draw.rect(screen,RED,RECT)
+            #time.sleep(2)
+            #pygame.draw.rect(screen,BLACK,RECT)¡
 
-      if edad == 'True':
-        if not chela:
-          print 'Permitido'
-          pygame.draw.rect(screen,GREEN,RECT)
-          c = requests.post(URL + 'free/' + match + '/true')
-          #time.sleep(2)
-          #pygame.draw.rect(screen,BLACK,RECT)
-        else:
-          print 'Entregada'
-          pygame.draw.rect(screen,BLUE,RECT)
-          #time.sleep(2)
-          #pygame.draw.rect(screen,BLACK,RECT)
-      else:
-        print 'No Permitido'
-        pygame.draw.rect(screen,RED,RECT)
-        #time.sleep(2)
-        #pygame.draw.rect(screen,BLACK,RECT)
+    except requests.ConnectionError as e:
+        pass
+    except requests.HTTPError as e:
+        pass
+    except requests.ConnectTimeout as e:
+        pass
+    except requests.ReadTimeout as e:
+        pass
+    except requests.Timeout as e:
+        pass
 
 
-      
       pygame.display.update()
       #time.sleep(2)
       #pygame.draw.rect(screen,BLACK,RECT)
