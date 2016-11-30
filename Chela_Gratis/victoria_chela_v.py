@@ -25,6 +25,14 @@ pygame.init()
 pygame.mouse.set_visible(False)
 screen = pygame.display.set_mode(SCR_SIZE)
 
+
+
+def white_background():
+    background = pygame.Surface(screen.get_size())
+    background = background.convert()
+    background.fill((250, 250, 250))
+
+
 #URL = 'http://10.0.1.100:8080/api/visitors/'
 URL = 'http://10.1.8.170:9000/api/visitors/'
 
@@ -40,7 +48,8 @@ if __name__ == '__main__':
 
   if ser.isOpen():
     while True:
-      pygame.draw.rect(screen,WHITE,RECT)
+      #pygame.draw.rect(screen,WHITE,RECT)
+      white_background()
       line = ser.readline()
       last_received = line.strip()
       match = rfidPattern.sub('', last_received)
