@@ -59,11 +59,10 @@ def permitido():
     screen.blit(background, (0, 0))
     pygame.display.flip()
 
-def nopermitido():
+def nopermitido(text):
     background.fill(RED)
-
     font = pygame.font.Font(None, 36)
-    text = font.render("MENOR DE EDAD", 1, (10, 10, 10))
+    text = font.render(text, 1, (10, 10, 10))
     textpos = text.get_rect(centerx=background.get_width()/2)
     background.blit(text, textpos)
     screen.blit(background, (0, 0))
@@ -109,9 +108,11 @@ if __name__ == '__main__':
               print 'Entregada'
               entregado()
           else:
-              error = json.get('error')
+	      code = r.status_code
+	      print code
+              error = json.get('Error')
               print error
-              nopermitido()
+              nopermitido(error)
 
       except requests.ConnectionError as e:
           pass
