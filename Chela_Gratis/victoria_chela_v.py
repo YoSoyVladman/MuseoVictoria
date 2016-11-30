@@ -31,6 +31,12 @@ def white_background():
     background = pygame.Surface(screen.get_size())
     background = background.convert()
     background.fill(WHITE)
+
+    font = pygame.font.Font(None, 36)
+    text = font.render("COCOLAB", 1, (10, 10, 10))
+    textpos = text.get_rect(centerx=background.get_width()/2)
+    background.blit(text, textpos)
+
     screen.blit(background, (0, 0))
     pygame.display.flip()
 
@@ -38,6 +44,12 @@ def entregado():
     background = pygame.Surface(screen.get_size())
     background = background.convert()
     background.fill(RED)
+
+    font = pygame.font.Font(None, 36)
+    text = font.render("ENTREGADO", 1, (10, 10, 10))
+    textpos = text.get_rect(centerx=background.get_width()/2)
+    background.blit(text, textpos)
+
     screen.blit(background, (0, 0))
     pygame.display.flip()
 
