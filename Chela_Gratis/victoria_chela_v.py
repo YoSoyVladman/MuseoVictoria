@@ -24,12 +24,11 @@ RECT = [0, 0, 320, 240]
 pygame.init()
 pygame.mouse.set_visible(False)
 screen = pygame.display.set_mode(SCR_SIZE)
-
+background = pygame.Surface(screen.get_size())
+background = background.convert()
 
 
 def white_background():
-    background = pygame.Surface(screen.get_size())
-    background = background.convert()
     background.fill(WHITE)
 
     font = pygame.font.Font(None, 36)
@@ -41,8 +40,6 @@ def white_background():
     pygame.display.flip()
 
 def entregado():
-    background = pygame.Surface(screen.get_size())
-    background = background.convert()
     background.fill(RED)
 
     font = pygame.font.Font(None, 36)
