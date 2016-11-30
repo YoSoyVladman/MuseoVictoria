@@ -40,15 +40,35 @@ def white_background():
     pygame.display.flip()
 
 def entregado():
+    background.fill(AZUL)
+
+    font = pygame.font.Font(None, 36)
+    text = font.render("CHELA ENTREGADA", 1, (10, 10, 10))
+    textpos = text.get_rect(centerx=background.get_width()/2)
+    background.blit(text, textpos)
+    screen.blit(background, (0, 0))
+    pygame.display.flip()
+
+def permitido():
+    background.fill(GREEN)
+
+    font = pygame.font.Font(None, 36)
+    text = font.render("CHELA GRATIS", 1, (10, 10, 10))
+    textpos = text.get_rect(centerx=background.get_width()/2)
+    background.blit(text, textpos)
+    screen.blit(background, (0, 0))
+    pygame.display.flip()
+
+def nopermitido():
     background.fill(RED)
 
     font = pygame.font.Font(None, 36)
-    text = font.render("ENTREGADO", 1, (10, 10, 10))
+    text = font.render("MENOR DE EDAD", 1, (10, 10, 10))
     textpos = text.get_rect(centerx=background.get_width()/2)
     background.blit(text, textpos)
-
     screen.blit(background, (0, 0))
     pygame.display.flip()
+
 
 #URL = 'http://10.0.1.100:8080/api/visitors/'
 URL = 'http://10.1.8.170:9000/api/visitors/'
