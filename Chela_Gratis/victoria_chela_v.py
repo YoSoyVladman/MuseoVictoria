@@ -32,7 +32,7 @@ def white_background():
     background.fill(WHITE)
 
     font = pygame.font.Font(None, 36)
-    text = font.render("COCOLAB", 1, (10, 10, 10))
+    text = font.render("COCOLAB", 1,WHITE)
     textpos = text.get_rect(centerx=background.get_width()/2)
     background.blit(text, textpos)
 
@@ -43,7 +43,7 @@ def entregado():
     background.fill(BLUE)
 
     font = pygame.font.Font(None, 36)
-    text = font.render("CHELA ENTREGADA", 1, (10, 10, 10))
+    text = font.render("CHELA ENTREGADA", 1,WHITE)
     textpos = text.get_rect(centerx=background.get_width()/2)
     background.blit(text, textpos)
     screen.blit(background, (0, 0))
@@ -53,7 +53,7 @@ def permitido():
     background.fill(GREEN)
 
     font = pygame.font.Font(None, 36)
-    text = font.render("CHELA GRATIS", 1, (10, 10, 10))
+    text = font.render("CHELA GRATIS", 1,WHITE)
     textpos = text.get_rect(centerx=background.get_width()/2)
     background.blit(text, textpos)
     screen.blit(background, (0, 0))
@@ -62,7 +62,7 @@ def permitido():
 def nopermitido(text):
     background.fill(RED)
     font = pygame.font.Font(None, 36)
-    text = font.render(text, 1, (10, 10, 10))
+    text = font.render(text, 1,WHITE)
     textpos = text.get_rect(centerx=background.get_width()/2)
     background.blit(text, textpos)
     screen.blit(background, (0, 0))
@@ -109,12 +109,12 @@ if __name__ == '__main__':
               entregado()
           else:
 	      if(r.status_code == requests.codes.ok):
-		n = "MENOR DE EDAD"
-		nopermitido(n)
+              n = "MENOR DE EDAD"
+              nopermitido(n)
 	      else:
-		error = json.get('Error')
-              	print error
-              	nopermitido(error)
+              error = json.get('Error')
+              print error
+              nopermitido(error)
 
       except requests.ConnectionError as e:
           pass
