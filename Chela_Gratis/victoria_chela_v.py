@@ -1,4 +1,3 @@
-
 import re, sys, signal, os, time, datetime
 import serial
 ### Instalar Requets
@@ -69,19 +68,17 @@ if __name__ == '__main__':
           else:
             print 'No Permitido'
             pygame.draw.rect(screen,RED,RECT)
-            #time.sleep(2)
-            #pygame.draw.rect(screen,BLACK,RECT)¡
 
-    except requests.ConnectionError as e:
-        pass
-    except requests.HTTPError as e:
-        pass
-    except requests.ConnectTimeout as e:
-        pass
-    except requests.ReadTimeout as e:
-        pass
-    except requests.Timeout as e:
-        pass
+      except requests.ConnectionError as e:
+          pass
+      except requests.HTTPError as e:
+          pass
+      except requests.ConnectTimeout as e:
+          pass
+      except requests.ReadTimeout as e:
+          pass
+      except requests.Timeout as e:
+          pass
 
 
       pygame.display.update()
