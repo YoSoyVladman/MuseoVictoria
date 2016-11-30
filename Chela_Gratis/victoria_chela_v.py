@@ -40,7 +40,7 @@ def white_background():
     pygame.display.flip()
 
 def entregado():
-    background.fill(AZUL)
+    background.fill(BLUE)
 
     font = pygame.font.Font(None, 36)
     text = font.render("CHELA ENTREGADA", 1, (10, 10, 10))
