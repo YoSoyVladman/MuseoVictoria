@@ -109,12 +109,12 @@ if __name__ == '__main__':
               entregado()
           else:
 	      if(r.status_code == requests.codes.ok):
-              n = "MENOR DE EDAD"
-              nopermitido(n)
+		n = "MENOR DE EDAD"
+              	nopermitido(n)
 	      else:
-              error = json.get('Error')
-              print error
-              nopermitido(error)
+              	error = json.get('Error')
+              	print error
+              	nopermitido(error)
 
       except requests.ConnectionError as e:
           pass
