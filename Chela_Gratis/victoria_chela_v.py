@@ -101,7 +101,7 @@ if __name__ == '__main__':
           if edad == 'True':
             if not chela:
               print 'Permitido'
-              pygame.draw.rect(screen,GREEN,RECT)
+              permitido()
               c = requests.post(URL + 'free/' + match + '/true')
               #time.sleep(2)
               #pygame.draw.rect(screen,BLACK,RECT)
@@ -110,7 +110,7 @@ if __name__ == '__main__':
               entregado()
           else:
             print 'No Permitido'
-            pygame.draw.rect(screen,RED,RECT)
+            nopermitido()
 
       except requests.ConnectionError as e:
           pass
