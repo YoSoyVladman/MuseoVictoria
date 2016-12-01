@@ -94,61 +94,69 @@ if __name__ == '__main__':
     inicio()
     pass
 
-  if ser.isOpen():
-    inicio()
-    while True:
-       #pygame.draw.rect(screen,WHITE,RECT)
-      line = ser.readline()
-      last_received = line.strip()
-      match = rfidPattern.sub('', last_received)
-      print match
-      cadena = URL + 'edad/' +match
-      try:
-          r = requests.get(cadena)
-          json = r.json()
-          print json
-          edad = json.get('edad')
-          chela = json.get('chelaFree')
-
-          if edad == 'True':
-            if not chela:
-              print 'Permitido'
-              permitido()
-              c = requests.post(URL + 'free/' + match + '/true')
-              #time.sleep(2)
-              #pygame.draw.rect(screen,BLACK,RECT)
-            else:
-              print 'Entregada'
-              entregado()
-          else:
-	      if(r.status_code == requests.codes.ok):
-		n = "MENOR DE EDAD"
-              	nopermitido(n)
-	      else:
-              	error = "NO ENCONTRADO"
-              	print 'Error'
-              	nopermitido(error)
-
-      except requests.ConnectionError as e:
-          inicio()
-          pass
-      except requests.HTTPError as e:
-          inicio()
-          pass
-      except requests.ConnectTimeout as e:
-          inicio()
-          pass
-      except requests.ReadTimeout as e:
-          inicio()
-          pass
-      except requests.Timeout as e:
-          inicio()
-          pass
 
 
-      #time.sleep(10)
-      #espera()
-      pygame.display.update()
-      time.sleep(2)
-      espera()
-      #pygame.draw.rect(screen,BLACK,RECT)
+  try:
+
+      if ser.isOpen():
+        inicio()
+        while True:
+           #pygame.draw.rect(screen,WHITE,RECT)
+          line = ser.readline()
+          last_received = line.strip()
+          match = rfidPattern.sub('', last_received)
+          print match
+          cadena = URL + 'edad/' +match
+          try:
+              r = requests.get(cadena)
+              json = r.json()
+              print json
+              edad = json.get('edad')
+              chela = json.get('chelaFree')
+
+              if edad == 'True':
+                if not chela:
+                  print 'Permitido'
+                  permitido()
+                  c = requests.post(URL + 'free/' + match + '/true')
+                  #time.sleep(2)
+                  #pygame.draw.rect(screen,BLACK,RECT)
+                else:
+                  print 'Entregada'
+                  entregado()
+              else:
+    	      if(r.status_code == requests.codes.ok):
+    		n = "MENOR DE EDAD"
+                  	nopermitido(n)
+    	      else:
+                  	error = "NO ENCONTRADO"
+                  	print 'Error'
+                  	nopermitido(error)
+
+          except requests.ConnectionError as e:
+              inicio()
+              pass
+          except requests.HTTPError as e:
+              inicio()
+              pass
+          except requests.ConnectTimeout as e:
+              inicio()
+              pass
+          except requests.ReadTimeout as e:
+              inicio()
+              pass
+          except requests.Timeout as e:
+              inicio()
+              pass
+
+
+          #time.sleep(10)
+          #espera()
+          pygame.display.update()
+          time.sleep(2)
+          espera()
+          #pygame.draw.rect(screen,BLACK,RECT)
+
+  except serial.serialutil.SerialException:
+      inicio()
+      pass
