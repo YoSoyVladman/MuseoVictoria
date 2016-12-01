@@ -125,10 +125,10 @@ if __name__ == '__main__':
                   print 'Entregada'
                   entregado()
               else:
-    	      if(r.status_code == requests.codes.ok):
-    		n = "MENOR DE EDAD"
+		  if(r.status_code == requests.codes.ok):
+    		  	n = "MENOR DE EDAD"
                   	nopermitido(n)
-    	      else:
+    	      	  else:
                   	error = "NO ENCONTRADO"
                   	print 'Error'
                   	nopermitido(error)
@@ -157,6 +157,8 @@ if __name__ == '__main__':
           espera()
           #pygame.draw.rect(screen,BLACK,RECT)
 
-  except serial.serialutil.SerialException:
+  except serial.SerialException as e:
+      print 'desconecato'
+      print e
       inicio()
       pass
