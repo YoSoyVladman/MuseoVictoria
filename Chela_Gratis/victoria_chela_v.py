@@ -91,7 +91,8 @@ if __name__ == '__main__':
     ser.flushOutput()
   except Exception, e:
     print "error open serial port: " + str(e)
-    exit()
+    inicio()
+    pass
 
   if ser.isOpen():
     inicio()
@@ -129,14 +130,19 @@ if __name__ == '__main__':
               	nopermitido(error)
 
       except requests.ConnectionError as e:
+          inicio()
           pass
       except requests.HTTPError as e:
+          inicio()
           pass
       except requests.ConnectTimeout as e:
+          inicio()
           pass
       except requests.ReadTimeout as e:
+          inicio()
           pass
       except requests.Timeout as e:
+          inicio()
           pass
 
 
